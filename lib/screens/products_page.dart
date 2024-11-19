@@ -1,3 +1,4 @@
+import 'package:dmk/main.dart';
 import 'package:dmk/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,10 +34,10 @@ class _ProductsPageState extends State<ProductsPage>
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
-                );
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => MainPage()),
+            );
           },
         ),
         actions: [
