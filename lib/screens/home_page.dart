@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'สินค้าสำหรับคุณโดยเฉพาะ',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'สินค้าพรีเมี่ยม ขายส่งยกลัง',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -102,11 +102,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildProductGrid(List<Product> productList, BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3, // Set crossAxisCount to 3 for 3 columns
-        crossAxisSpacing: 8.0,
-        mainAxisSpacing: 8.0,
+        crossAxisSpacing: 4.0,
+        mainAxisSpacing: 4.0,
         childAspectRatio: 0.8, // Adjust aspect ratio to make items less tall
       ),
       itemCount: productList.length,
@@ -124,13 +124,13 @@ class _HomePageState extends State<HomePage> {
             );
           },
           child: Card(
-            color: Colors.grey[200],
+            color: Colors.white,
             elevation: 2, // Adds a slight shadow effect
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12), // Slightly larger border radius
             ),
             child: Padding(
-              padding: const EdgeInsets.all(6.0), // Smaller padding for a more compact card
+              padding: const EdgeInsets.all(100.0), // Smaller padding for a more compact card
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -148,14 +148,14 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 8),
                   Text(
                     product.title,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 8),
                   Text(
                     product.price,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                    style: TextStyle(color: Colors.grey[600], fontSize: 24),
                   ),
                 ],
               ),
@@ -185,8 +185,8 @@ class GoodsDetailPage extends StatelessWidget {
           children: [
             Image(
               image: AssetImage(product.imagePath),
-              width: 100,
-              height: 100,
+              width: 200,
+              height: 200,
               fit: BoxFit.cover,
             ),
             const SizedBox(height: 10),

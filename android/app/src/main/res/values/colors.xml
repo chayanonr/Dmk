@@ -1,0 +1,4 @@
+<resources>
+    <!-- Other colors -->
+    <color name="notification_color">#FF0000</color> <!-- Replace with your preferred color -->
+</resources>

@@ -1,50 +1,37 @@
 buildscript {
-    dependencies {
-        // Add the Google services Gradle plugin
-        classpath 'com.google.gms:google-services:4.4.2' // Add this line
+    repositories {
+        google()
+        mavenCentral()
     }
+    dependencies {
+        // Adjust versions to match your Android Studio and project requirements
+        classpath 'com.android.tools.build:gradle:8.1.1' 
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
+        classpath 'com.google.gms:google-services:4.3.15'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
+    }
+}
+
+plugins {
+    id "com.android.application" version "8.2.0" apply false
+    id "org.jetbrains.kotlin.android" version "1.8.22" apply false
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
 }
 
 rootProject.buildDir = "../build"
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
-    project.evaluationDependsOn(":app")
+    project.evaluationDependsOn(":app") // Optional: Remove if unnecessary
 }
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
-pluginManagement {
-    def flutterSdkPath = {
-        def properties = new Properties()
-        file("local.properties").withInputStream { properties.load(it) }
-        def flutterSdkPath = properties.getProperty("flutter.sdk")
-        assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
-        return flutterSdkPath
-    }()
-
-    includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
-
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
-
-plugins {
-    id "dev.flutter.flutter-plugin-loader" version "1.0.0"
-    id "com.android.application" version "8.1.0" apply false
-    id "org.jetbrains.kotlin.android" version "1.8.22" apply false
-}
-
-include ":app"

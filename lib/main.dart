@@ -8,7 +8,7 @@ import 'screens/home_page.dart';
 import 'screens/products_page.dart';
 import 'screens/saved_page.dart';
 import 'screens/user_page.dart';
-import 'package:dmk/screens/login_page.dart';
+import 'screens/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,18 +59,20 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   String _currentMenu = 'main';
 
+// _currentIndex assign
   final List<Widget> _pages = [
     HomePage(),
-    const ChatPage(),
-    const ProductsPage(),
-    const CartPage(),
-    const SavedPage(),
+    ChatPage(),
+    ProductsPage(),
+    CartPage(),
+    SavedPage(),
   ];
 
   void _onTabTapped(int index) {
     User? user = FirebaseAuth.instance.currentUser;
 
-    if ((index == 1 || index == 2 || index == 3 || index == 4) && user == null) {
+    if ((index == 1 || index == 2 || index == 3 || index == 4) &&
+        user == null) {
       _navigateToLoginPage();
       return;
     }
@@ -299,7 +301,8 @@ class _MainPageState extends State<MainPage> {
       case 'packaging':
         return _subMenuItems(['บรรจุภัณฑ์', 'ภาชนะใส่อาหาร']);
       case 'knowledge':
-        return _subMenuItems(['เคล็ดลับการทำอาหาร', 'ความรู้เกี่ยวกับโภชนาการ']);
+        return _subMenuItems(
+            ['เคล็ดลับการทำอาหาร', 'ความรู้เกี่ยวกับโภชนาการ']);
       default:
         return [];
     }
